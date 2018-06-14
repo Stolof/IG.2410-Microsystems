@@ -69,6 +69,24 @@ struct node *insert(struct node *root, int value){
 }
 
 // e) return sorted values.
+void display(struct node *root){
+  if(root->leftNode == NULL){
+    printf("%d\n", root->key);
+  }
+  else{
+    display(root->leftNode);
+    printf("%d\n", root->key);
+  }
+  if(root->rightNode == NULL){
+    return;
+  }
+  else{
+    display(root->rightNode);
+  }
+
+  return;
+}
+
 int main(int argc, char const *argv[]){
 
     Node *root = malloc(sizeof(Node));
@@ -85,5 +103,6 @@ int main(int argc, char const *argv[]){
     printf("The lowest value is: %d\n", plusPetit(root));
     printf("Is 10 available in the tree %d\n", research(root, 10));
     printf("Is 9 available in the tree  %d\n", research(root, 9));
+    display(root);
     return 0;
 }
